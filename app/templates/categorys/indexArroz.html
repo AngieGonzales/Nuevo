@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <title>Categoria Lacteos y Huevos</title>
+</head>
+<body>
+    <header>
+        <img class="icon0" src="static/imagenes/Supermercado.png" alt="">
+        <h1>SUPERMARKET</h1>
+    
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('principal.PaginaInicio')}}">INICIO</a></li>
+            <li><a href="#">CONTACTO</a></li>
+            <li><a href=" {{url_for('principal.ruta_carrito')}}"><img class="car" src="static/imagenes/car.svg" alt=""></a></li>
+        </ul>
+    </nav>
+    </header>
+    <aside class="sidebar">
+        <ul>
+            <li><a href="{{ url_for('principal.frutas_verduras') }}"><img class="icon1" src="static/imagenes/Verduras.png" alt="">Frutas y Verduras</a></li>
+            <li><a href="{{ url_for('principal.lacteos_huevos') }}"><img class="icon1" src="static/imagenes/Lacteos.png" alt="">Lácteos y Huevos</a></li>
+            <li><a href="{{ url_for('principal.carnes') }}"><img class="icon1" src="static/imagenes/Carnes.png" alt="">Carnes</a></li>
+            <li><a href="{{ url_for('principal.arroz_granos_pastas') }}"><img class="icon1" src="static/imagenes/Arroz.png" alt="">Arroz, granos y pastas</a></li>
+            <li><a href="{{ url_for('principal.aceites_sal_endulzantes')}}"><img class="icon1" src="static/imagenes/Aceites.png" alt="">Aceites, sal y endulzantes</a></li>
+            <li><a href="{{ url_for('principal.despensa')}}"><img class="icon1" src="static/imagenes/Despensa.png" alt="">Despensa</a></li>
+            <li><a href="{{ url_for('principal.bebidas')}}"><img class="icon1" src="static/imagenes/Bebidas.png" alt="">Bebidas</a></li>
+            <li><a href="{{ url_for('principal.aseo_personal')}}"><img class="icon1" src="static/imagenes/Personal.png" alt="">Aseo Personal</a></li>
+            <li><a href="{{ url_for('principal.aseo_hogar')}}"><img class="icon1" src="static/imagenes/Hogar.png" alt="">Aseo del Hogar</a></li>
+            <li><a href="{{ url_for('principal.mascotas')}}"><img class="icon1" src="static/imagenes/Mascotas.png" alt="">Mascotas</a></li>
+            <li><a href="{{ url_for('principal.licores')}}"><img class="icon1" src="static/imagenes/Licores.png" alt="">Licores</a></li>
+            <li><a href="{{ url_for('principal.salsas_sazonadores')}}"><img class="icon1" src="static/imagenes/Sazonadores.png" alt="">Salsas y Sazonadores</a></li>
+        </ul>
+    </aside>
+    <div class="product-container">
+        <div class="container" id="product-1">
+            <img class="img-Alqueria" src="static/imagenes/aroz.png" alt="Arroz diana ">
+            <h2 class="name1" >Arroz Diana</h2>
+            <h3>5000 gr</h3>
+            <h3>$16.000</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Arroz Diana', 16000)">Agregar</button>
+        </div>
+        <div class="container" id="product-2">
+            <img class="img-Alqueria" src="static/imagenes/frijoles.png" alt="fresas">
+            <h2 class="name2" >Frijoles Diana</h2>
+            <h3>1000 gr</h3>
+            <h3>$10.000</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Frijoles Diana', 10000)">Agregar</button>
+        </div>
+        <div class="container">
+            <img class="img-uvas" src="static/imagenes/federal.png" alt="sandias">
+            <h2 class="name13" >Arroz Federal Integral</h2>
+            <h3>500 gr</h3>
+            <h3>$ 4.000</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Arroz Federal Integral', 4000)">Agregar</button>
+        </div>
+        <div class="container">
+            <img class="img-alqueria" src="static/imagenes/lenteja.png" alt="sandias">
+            <h2 class="name14" >Lentejas Diana</h2>
+            <h3>1000 gr</h3>
+            <h3>$ 5.500</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Lentejas Diana', 5500)">Agregar</button>
+        </div>
+        <div class="container">
+            <img class="img-Alqueria" src="static/imagenes/supremo.png" alt="sandias">
+            <h2 class="name5" >Arroz Supremo</h2>
+            <h3>1.000 gr</h3>
+            <h3>$ 7.000</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Arroz Supremo', 7000)">Agregar</button>
+        </div>
+        <div class="container">
+            <img class="img-sandia" src="static/imagenes/gavaza.png" alt="sandias">
+            <h2 class="name15" >Pastas Gavaza</h2>
+            <h3>500 gr</h3>
+            <h3>$ 3.000</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Pastas Gavaza', 3000)">Agregar</button>
+        </div>
+        <div class="container">
+            <img class="img-Alqueria" src="static/imagenes/tornillos.png" alt="sandias">
+            <h2 class="name1" >Tornillos Doria</h2>
+            <h3>750 gr</h3>
+            <h3>$ 4.000</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Tornillos Doria', 4000)">Agregar</button>
+        </div>
+        <div class="container">
+            <img class="img-alqueria" src="static/imagenes/fideos.png" alt="sandias">
+            <h2 class="name13" >Fideos Pastas la Muñeca</h2>
+            <h3>500 gr</h3>
+            <h3>$3.000</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Fideos Pastas la Muñeca', 3000)">Agregar</button>
+        </div>
+        <div class="container">
+            <img class="img-alqueria" src="static/imagenes/lasagna.png" alt="huevos kikes">
+            <h2 class="name9" >Lasagna Pastas la Muñeca</h2>
+            <h3>400 gr</h3>
+            <h3>$12.000</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Lasagna Pastas la Muñeca', 12000)">Agregar</button>
+        </div>
+        <div class="container">
+            <img class="img-alqueria" src="static/imagenes/macarrones.png" alt="huevos AA">
+            <h2 class="name10" >Macarrones Con Queso La Muñeca</h2>
+            <h3>1.000 gr</h3>
+            <h3>$13.000</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Macarrones Con Queso La Muñeca', 13000)">Agregar</button>
+        </div>
+        <div class="container">
+            <img class="img-Alqueria" src="static/imagenes/pira.png" alt="sandias">
+            <h2 class="name11" >Maiz Pira Olimpoca</h2>
+            <h3>500 gr</h3>
+            <h3>$2.500</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Maiz Pira Olimpoca', 2500)">Agregar</button>
+        </div>
+        <div class="container">
+            <img class="img-Alqueria" src="static/imagenes/letras.jpg" alt="sandias">
+            <h2 class="name6" >Letras Doria</h2>
+            <h3>500 gr</h3>
+            <h3>$3.500</h3>
+            <button class="agregar-carrito" onclick="agregarAlCarrito('Letras Doria', 3500)">Agregar</button>
+        </div>
+    </div>
+    <script>
+        function agregarAlCarrito(nombre, precio) {
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            carrito.push({ nombre: nombre, precio: precio });
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            alert(`El producto ${nombre} ha sido agregado al carrito de compras`);
+        }
+    </script>
+</body>
+</html>

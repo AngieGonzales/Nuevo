@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylecarrito.css') }}">
+</head>
+<body>
+    <header>
+        <img class="icon0" src="static/imagenes/Supermercado.png" alt="">
+        <h1>SUPERMARKET</h1>
+    <nav class="fondo">
+        <ul>
+            <li><a href="{{ url_for('principal.PaginaInicio')}}">INICIO</a></li>
+            <li><a href="#">CONTACTO</a></li>
+            <li><a href=" {{url_for('principal.ruta_carrito')}}"><img class="car" src="static/imagenes/car.svg" alt=""></a></li>
+        </ul>
+    </nav>
+    
+</header>
+    <div class="carrito">
+        <h2>Carrito de Compras</h2>
+        <table id="tablaCarrito">
+            <thead>
+                <tr>
+                    <th>PRODUCTO</th>
+                    <th>CANTIDAD</th>
+                    <th>PRECIO UNITARIO</th>
+                    <th>SUBTOTAL</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoCarrito">
+            </tbody>
+        </table>
+        <h3>TOTAL: <span id="total">$0</span></h3>
+        <button id="vaciarCarrito" class="btn-empty">Vaciar Carrito</button>
+        <button id="comprarCarrito" class="btn-empty">Comprar</button>
+    </div>
+    <script>
+        function actualizarTabla() {
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            let total = 0;
+
+            const cuerpoCarrito = document.getElementById('cuerpoCarrito');
+            cuerpoCarrito.innerHTML = '';
+
+            carrito.forEach((item, index) => {
+                const subtotal = item.precio * item.cantidad;
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td>${item.nombre}</td>
+                    <td><input type="number" class="cantidad" value="${item.cantidad}" min="1" data-index="${index}"></td>
+                    <td>$${item.precio}</td>
+                    <td>$${subtotal}</td>
+                    <td>
+                        <button class="btn-update" data-index="${index}">SUBTOTAL</button>
+                        <button class="btn-delete" data-index="${index}">ELIMINAR</button>
+                    </td>
+                `;
+                cuerpoCarrito.appendChild(fila);
+                total += subtotal;
+            });
+
+            document.getElementById('total').innerText = `$${total}`;
+
+            // Re-attach event listeners to update buttons
+            document.querySelectorAll('.btn-update').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = this.getAttribute('data-index');
+                    const cantidadInput = document.querySelector(`.cantidad[data-index="${index}"]`);
+                    const nuevaCantidad = parseInt(cantidadInput.value);
+
+                    if (nuevaCantidad > 0) {
+                        carrito[index].cantidad = nuevaCantidad;
+                        localStorage.setItem('carrito', JSON.stringify(carrito));
+                        actualizarTabla();
+                    } else {
+                        alert('La cantidad debe ser mayor a 0.');
+                    }
+                });
+            });
+            document.querySelectorAll('.btn-delete').forEach(button => {
+        button.addEventListener('click', function() {
+            const index = this.getAttribute('data-index');
+            carrito.splice(index, 1);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            actualizarTabla();
+        });
+    });
+        }
+
+        document.getElementById('vaciarCarrito').addEventListener('click', function() {
+            if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
+                localStorage.removeItem('carrito');
+                actualizarTabla();
+            }
+        });
+        document.getElementById('comprarCarrito').addEventListener('click', function() {
+            if (confirm('¿Deseas confirmar la compra de los productos en tu carrito?')) {
+                generarFactura();
+            }
+        });
+
+        function generarFactura() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let facturaVentana = window.open('', '_blank');
+
+    let contenidoFactura = `
+        <html>
+        <head>
+            <title>Factura De Productos</title>
+            <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            color: #e70023; /* Green supermarket color */
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2em;
+            font-weight: 400;
+            color: #e70023;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            font-weight: 500;
+            color: #7d7d7d;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        th {
+            background-color: #e70023;
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        tfoot th {
+            background-color: #f1f1f1;
+            color: #333;
+            font-weight: 600;
+        }
+
+        tfoot td {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>SUPERMARKET</h1>
+                <h2>Factura De Productos</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>PRODUCTO</th>
+                            <th>CANTIDAD</th>
+                            <th>PRECIO UNITARIO</th>
+                            <th>SUBTOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+    `;
+
+    carrito.forEach(item => {
+        const subtotal = item.precio * item.cantidad;
+        contenidoFactura += `
+            <tr>
+                <td>${item.nombre}</td>
+                <td>${item.cantidad}</td>
+                <td>$${item.precio}</td>
+                <td>$${subtotal}</td>
+            </tr>
+        `;
+    });
+
+    contenidoFactura += `
+                    </tbody>
+                </table>
+                <h3>Total: ${document.getElementById('total').innerText}</h3>
+                <p style="text-align: center; margin-top: 30px; font-size: 1.2em; color: #7d7d7d;">Gracias por preferir SUPERMARKET para tus compras. ¡Regresa pronto!</p>
+            </div>
+        </body>
+        </html>
+    `;
+
+    facturaVentana.document.write(contenidoFactura);
+    facturaVentana.document.close();
+
+    localStorage.removeItem('carrito');
+    actualizarTabla();
+}
+
+        // Inicializa la tabla al cargar la página
+        actualizarTabla();
+    </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    text-align: left;
+    margin-left: 30px;
+    font-family: Montserrat;
+    font-size: 40px;
+}
+header {
+    background: #e70023;
+    color: #fff;
+    padding: 30px;
+    width: 96%;
+    display: flex;
+}
+.fondo {
+    width: 80%;
+}
+.fondo ul {
+    list-style-type: none; /* Quitar los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Alinear los elementos en fila */
+    gap: 20px; /* Espacio entre los elementos */
+    justify-content: flex-end;
+}
+.fondo li {
+    margin-right: 0; /* Quitar margen derecho adicional */
+}
+.fondo a {
+    text-decoration: none;
+    color: #faf9f9; 
+    font-size: 15px;
+    font-family: Poppins;
+}
+.icon0 {
+    width: 70px; 
+    height: 70px;
+    margin-right: 10px;
+    margin-left: 3%;
+}
+.carrito {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 3%;
+}
+h2 {
+    text-align: center;
+    color: #444;
+    font-size: 20px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table th, table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+table th {
+    background-color: #f2f2f2;
+    color: #333232;
+}
+table td input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+.cantidad {
+    background-color: #eeebec;
+
+}
+h3 {
+    margin-top: 20px;
+    text-align: left;
+    color: #333;
+    font-size: 15px;
+}
+#total {
+    font-weight: bold;
+    color: #e70023;
+}
+.btn-empty, .btn-update {
+    background-color: #e70023;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 54%;
+}
+.btn-empty:hover, .btn-update:hover {
+    background-color: #e70023;
+}
+
+.btn-update {
+    background-color: #e70023;
+}
+
+.btn-update:hover {
+    background-color: #e70023;
+}
+.btn-empty, .btn-delete {
+    background-color: #e70023;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 4%;
+    width: 54%;
+}
+.btn-empty:hover, .btn-delete:hover {
+    background-color: #e70023;
+}
+
+.btn-delete {
+    background-color: #e70023;
+}
+
+.btn-delete:hover {
+    background-color: #e70023;
+}
+#vaciarCarrito {
+    margin-top: 20px;
+    width: 40%;
+    font-size: 16px;
+    margin-left: 10%;
+}
+#comprarCarrito {
+    margin-top: 20px;
+    width: 40%;
+    font-size: 16px;
+}   
+            

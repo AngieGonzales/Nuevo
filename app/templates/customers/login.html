@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylelgin.css')}}">
+    <title>Login SuperMarket</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="login-container">
+
+        <form method="post" action="{{ url_for('user.login') }}" class="login-form">
+            <h2 class="login">Login</h2>
+            <div class="user">
+                <label class="letra" for="nameUser"><img class="icon" src="static/imagenes/user.png" alt=""></label>
+                <input type="text" name="nameUser" id="nameUser" placeholder="Enter your Username" class="form-control" required>
+            </div>
+            <div class="password">
+                <label class="letra" for="password"><img class="icon" src="static/imagenes/password.png" alt=""></label>
+                <input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control" required>
+            </div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}             
+                    {% for category, message in messages %}
+                        <div class="flash-message alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                 {% endif %}
+             {% endwith %}
+            <button  type="submit" class="btn">Login</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

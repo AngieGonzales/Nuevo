@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <title>Categoria de Aceites, Sales y Endulzantes</title>
+</head>
+<body>
+    <header>
+        <img class="icon0" src="static/imagenes/Supermercado.png" alt="">
+            <h1>SUPERMARKET</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('principal.PaginaInicio')}}">INICIO</a></li>
+                <li><a href="#">CONTACTO</a></li>
+                <li><a href=" {{url_for('principal.ruta_carrito')}}"><img class="car" src="static/imagenes/car.svg" alt=""></a></li>
+            </ul>
+        </nav>
+        
+    </header>  
+    <div>
+        <aside class="sidebar">
+            <ul>
+                <li><a href="{{ url_for('principal.frutas_verduras') }}"><img class="icon1" src="static/imagenes/Verduras.png" alt="">Frutas y Verduras</a></li>
+                <li><a href="{{ url_for('principal.lacteos_huevos') }}"><img class="icon1" src="static/imagenes/Lacteos.png" alt="">Lácteos y Huevos</a></li>
+                <li><a href="{{ url_for('principal.carnes') }}"><img class="icon1" src="static/imagenes/Carnes.png" alt="">Carnes</a></li>
+                <li><a href="{{ url_for('principal.arroz_granos_pastas') }}"><img class="icon1" src="static/imagenes/Arroz.png" alt="">Arroz, granos y pastas</a></li>
+                <li><a href="{{ url_for('principal.aceites_sal_endulzantes')}}"><img class="icon1" src="static/imagenes/Aceites.png" alt="">Aceites, sal y endulzantes</a></li>
+                <li><a href="{{ url_for('principal.despensa')}}"><img class="icon1" src="static/imagenes/Despensa.png" alt="">Despensa</a></li>
+                <li><a href="{{ url_for('principal.bebidas')}}"><img class="icon1" src="static/imagenes/Bebidas.png" alt="">Bebidas</a></li>
+                <li><a href="{{ url_for('principal.aseo_personal')}}"><img class="icon1" src="static/imagenes/Personal.png" alt="">Aseo Personal</a></li>
+                <li><a href="{{ url_for('principal.aseo_hogar')}}"><img class="icon1" src="static/imagenes/Hogar.png" alt="">Aseo del Hogar</a></li>
+                <li><a href="{{ url_for('principal.mascotas')}}"><img class="icon1" src="static/imagenes/Mascotas.png" alt="">Mascotas</a></li>
+                <li><a href="{{ url_for('principal.licores')}}"><img class="icon1" src="static/imagenes/Licores.png" alt="">Licores</a></li>
+                <li><a href="{{ url_for('principal.salsas_sazonadores')}}"><img class="icon1" src="static/imagenes/Sazonadores.png" alt="">Salsas y Sazonadores</a></li>
+            </ul>
+        </aside>
+        <div class="product-container">
+            <div class="container" >
+                <br>
+                <br>
+                <img class="img-coco" src="static/imagenes/sardinas.png" alt="manzanas">
+                <h2 class="name1" >Sardinas En Salsa De Tomate La Soberana</h2>
+                <h3>400 gr</h3>
+                <h3>$7.000</h3>
+                <br>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('Sardinas En Salsa De Tomate La Soberana', 7000)">Agregar</button>
+            </div>
+            <div class="container" >
+                <img class="img-Alqueria2" src="static/imagenes/aceitunas.png" alt="fresas">
+                <h2 class="name2" >Aceitunas Deshuesadas GranUnion</h2>
+                <h3>250 gr</h3>
+                <h3>$11.000</h3>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('Aceitunas Deshuesadas GranUnion', 11000)">Agregar</button>
+            </div>
+            <div class="container">
+                <img class="img-Alqueria" src="static/imagenes/maiz.png" alt="sandias">
+                <h2>Maiz Tierno San Jorge</h2>
+                <h3>190 gr</h3>
+                <h3>$6.000</h3>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('Maiz Tierno San Jorge', 6000)">Agregar</button>
+            </div>
+            <div class="container">
+                <img class="img-alqueria" src="static/imagenes/kripis.png" alt="sandias">
+                <h2 class="name4" >Choco Krispis Kelloggs</h2>
+                <h3>450 gr</h3>
+                <h3>$6.000</h3>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('Choco Krispis Kelloggs', 6000)">Agregar</button>
+            </div>
+            <div class="container">
+                <img class="img-Alqueria" src="static/imagenes/loops.png" alt="sandias">
+                <h2 class="name5" >Floot Loops Kelloggs</h2>
+                <h3>450 gr</h3>
+                <h3>$5.000</h3>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('Floot Loops Kelloggs', 5000)">Agregar</button>
+            </div>
+            <div class="container">
+                <img class="img-uvas" src="static/imagenes/maizena.png" alt="sandias">
+                <h2 class="name6" >Maizena</h2>
+                <h3>200 gr</h3>
+                <h3>$3.000</h3>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('Maizena', 3000)">Agregar</button>
+            </div>
+            <div class="container">
+                <img class="img-Alqueria" src="static/imagenes/gelatina.png" alt="sandias">
+                <h2 class="name7" >Gelatina De Fresa Gelhada</h2>
+                <h3>35 gr</h3>
+                <h3>$2.000</h3>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('Gelatina De Fresa Gelhada', 2000)">Agregar</button>
+            </div>
+            <div class="container">
+                <img class="img-piña" src="static/imagenes/ducales.png" alt="sandias">
+                <h2 class="name8" >Galletas Ducales Saltin Noel</h2>
+                <h3>120 gr</h3>
+                <h3>$4.000</h3>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('Galletas Ducales Saltin Noel', 4000)">Agregar</button>
+            </div>
+            <div class="container">
+                <img class="img-Alqueria" src="static/imagenes/tosh.png" alt="sandias">
+                <h2 class="name9" >Barras De Cereal Tosh Original</h2>
+                <h3>6 barras</h3>
+                <h3>$9.500</h3>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('Barras De Cereal Tosh Original', 9500)">Agregar</button>
+            </div>
+            <div class="container">
+                <img class="img-uvas" src="static/imagenes/atun.jpeg" alt="sandias">
+                <h2 class="name10" >Lomos De Atun En Aceite Zenu</h2>
+                <h3>160 gr</h3>
+                <h3>$6.500</h3>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('Lomos De Atun En Aceite Zenu', 6500)">Agregar</button>
+            </div>
+            <div class="container">
+                <img class="img-alqueria" src="static/imagenes/mora.jpeg" alt="sandias">
+                <h2 class="name11" >Mermelada De Mora San Jorge</h2>
+                <h3>250 gr</h3>
+                <h3>$3.000</h3>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('Mermelada De Mora San Jorge', 3000)">Agregar</button>
+            </div>
+            <div class="container">
+                <img class="img-Alqueria" src="static/imagenes/mello.jpg" alt="sandias">
+                <h2 class="name12" >Masmellow Surtido Colombina</h2>
+                <h3>75 gr</h3>
+                <h3>$5.000</h3>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('Masmellow Surtido Colombina', 5000)">Agregar</button>
+            </div>
+        </div>
+        <script>
+            function agregarAlCarrito(nombre, precio) {
+                const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+                carrito.push({ nombre: nombre, precio: precio });
+                localStorage.setItem('carrito', JSON.stringify(carrito));
+                alert(`El producto ${nombre} ha sido agregado al carrito de compras`);
+            }
+        </script>
+</body>
+</html>
